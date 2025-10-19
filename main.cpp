@@ -278,7 +278,7 @@ int main() {
     for (int t = 2; t<= 20; t++){
         cout << "Time step #" << t << ":\n";
 
-        if((rand() % 100 + 1) <= probServeFront)
+        if((rand() % 100 + 1) <= probServeFront){
             vector<int> ids;
             line.to_vector(ids);
             if(!ids.empty()){
@@ -286,33 +286,50 @@ int main() {
                 line.pop_front();
                 lineSize--;
             }
-
-         if((rand() % 100 + 1) <= probJoinEnd){
+        }
+        if((rand() % 100 + 1) <= probJoinEnd){
             int id = rand() % (int)names.size();
             line.push_back(id);
             lineSize++;
             cout<< "      " << names[id] << " joins the line\n";
             } 
 
+        if((rand() % 100 + 1) <= probEndLeave){
+            vector<int> ids;
+            line.to_vector(ids);
+            if(!ids.empty()){
+                cout << "      " << names[ids.back()] << " (at the rear) left the line \n";
+                line.pop_back();
+                lineSize--;
+            }
+        }
+
+        if((rand() % 100 + 1) <= probRandomLeave){
+            line.to_vector(ids);
+            if(!ids.empty()){
+                int pos = (rand() % (int)ids.size()) + 1;
+                cout << "      " << names[ids[pos - 1]] << " left the line \n";
+                line.delete_pos(pos);
+                lineSize--;
+            }
+        }
+
+        if((rand() % 100 + 1) <= probVIP){
+            int id = rand() % (int)names.size();
+            line.push_front(id);
+            lineSize++;
+            cout<< "      " << names[id] << " (VIP)joins the front of the line\n";
+            } 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+        cout << "    Resulting line:\n";
+        line.to_vector(ids);
+        if (ids.empty()) cout << "        (empty)\n";
+        else {
+            for (int id : ids)
+                cout << "        " << names[id] << "\n";
+        }
     }
-
-
-    
-
 
     return 0;
 }
