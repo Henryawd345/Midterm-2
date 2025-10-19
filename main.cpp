@@ -209,16 +209,24 @@ public:
     }
 };
 
-vector<string> loadNames(string& path){
-    vector<string> names;
+vector<string> loadNames(string path){
     ifstream fin(path);
+    if (!fin) {
+        cerr << "Error: cannot open '" << path << "'. Make sure the file exists.\n";
+        exit(1);
+    }
+    vector<string> names;
     string s;
 
-    while (getline(fin, s))
+    while (getline(fin, s)){
         if (!s.empty())
             names.push_back(s);
+    }
+    if (names.empty()){
+        cerr << "Error: '" << path << "' is empty.\n";
+        exit(1);
+    }    
 
-    
     return names;
 
 }
@@ -233,6 +241,11 @@ int main() {
     int probEndLeave = 20;
     int probRandomLeave = 10;
     int probVIP = 10;
+
+    vector<string> names = loadNames("names.txt");
+
+    DoublyLinkedList line;
+    int lineSize = 0;
 
 
 
