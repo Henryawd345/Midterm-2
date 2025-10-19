@@ -251,7 +251,6 @@ int main() {
     int probVIP = 10;
 
     vector<string> names = loadNames("names.txt");
-
     DoublyLinkedList line;
     int lineSize = 0;
 
@@ -263,17 +262,22 @@ int main() {
         lineSize++;
         cout << "    " << names[id] << " enters the line\n";
     }
+
     cout << "    Resulting line:\n";
     vector<int> ids;
     line.to_vector(ids);
     if(ids.empty()){
-        cout << "       empty \n";
+        cout << "       (empty) \n";
     }
     else{
         for(int id : ids){
             cout<< "         " << names[id] << "\n";
-
         }
+    }
+
+    for (int t = 2; t<= 20; t++){
+        cout << "Time step #" << t << ":\n";
+
     }
 
 
