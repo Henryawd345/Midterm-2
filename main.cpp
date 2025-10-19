@@ -2,6 +2,8 @@
 #include <fstream>
 #include <vector>
 #include <ctime>
+#include <cstdlib>
+
 
 using namespace std;
 
@@ -207,9 +209,33 @@ public:
     }
 };
 
+vector<string> loadNames(string& path){
+    vector<string> names;
+    ifstream fin(path);
+    string s;
+
+    while (getline(fin, s))
+        if (!s.empty())
+            names.push_back(s);
+
+    
+    return names;
+
+}
+
+
+
 int main() {
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
-    
+    int probServeFront = 40;
+    int probJoinEnd = 60;
+    int probEndLeave = 20;
+    int probRandomLeave = 10;
+    int probVIP = 10;
+
+
+
+
     return 0;
 }
