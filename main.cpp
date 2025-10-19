@@ -260,7 +260,7 @@ int main() {
         int id = rand() % (int)names.size();
         line.push_back(id);
         lineSize++;
-        cout << "    " << names[id] << " enters the line\n";
+        cout << "        " << names[id] << " enters the line\n";
     }
 
     cout << "    Resulting line:\n";
@@ -271,7 +271,7 @@ int main() {
     }
     else{
         for(int id : ids){
-            cout<< "         " << names[id] << "\n";
+            cout<< "        " << names[id] << "\n";
         }
     }
 
@@ -282,7 +282,7 @@ int main() {
             vector<int> ids;
             line.to_vector(ids);
             if(!ids.empty()){
-                cout << "      " << names[ids[0]] << " is served \n";
+                cout << "        " << names[ids[0]] << " is served \n";
                 line.pop_front();
                 lineSize--;
             }
@@ -291,14 +291,14 @@ int main() {
             int id = rand() % (int)names.size();
             line.push_back(id);
             lineSize++;
-            cout<< "      " << names[id] << " joins the line\n";
+            cout<< "        " << names[id] << " joins the line\n";
             } 
 
         if((rand() % 100 + 1) <= probEndLeave){
             vector<int> ids;
             line.to_vector(ids);
             if(!ids.empty()){
-                cout << "      " << names[ids.back()] << " (at the rear) left the line \n";
+                cout << "        " << names[ids.back()] << " (at the rear) left the line \n";
                 line.pop_back();
                 lineSize--;
             }
@@ -308,7 +308,7 @@ int main() {
             line.to_vector(ids);
             if(!ids.empty()){
                 int pos = (rand() % (int)ids.size()) + 1;
-                cout << "      " << names[ids[pos - 1]] << " left the line \n";
+                cout << "        " << names[ids[pos - 1]] << " left the line \n";
                 line.delete_pos(pos);
                 lineSize--;
             }
@@ -318,7 +318,7 @@ int main() {
             int id = rand() % (int)names.size();
             line.push_front(id);
             lineSize++;
-            cout<< "      " << names[id] << " (VIP)joins the front of the line\n";
+            cout<< "        " << names[id] << " (VIP)joins the front of the line\n";
             } 
 
 
@@ -329,7 +329,10 @@ int main() {
             for (int id : ids)
                 cout << "        " << names[id] << "\n";
         }
+        
+    cout << "--------------------------------------------------\n";
     }
+
 
     return 0;
 }
