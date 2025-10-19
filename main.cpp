@@ -206,6 +206,13 @@ public:
         }
         cout << endl;
     }
+
+    void to_vector(vector<int>& out) {
+        out.clear();
+        for (Node* cur = head; cur; cur = cur->next) 
+            out.push_back(cur->data);
+    }   
+
 };
 
 vector<string> loadNames(string path){
@@ -233,6 +240,8 @@ vector<string> loadNames(string path){
 
 
 int main() {
+    srand((unsigned)time(nullptr));
+
     //cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
 
     int probServeFront = 40;
@@ -249,8 +258,25 @@ int main() {
     cout<<"store opens: \n";
     for (int i = 0; i < 5; i++)
     {
-        //
+        int id = rand() % (int)names.size();
+        line.push_back(id);
+        lineSize++;
+        cout << "    " << names[id] << " enters the line\n";
     }
+    cout << "    Resulting line:\n";
+    vector<int> ids;
+    line.to_vector(ids);
+    if(ids.empty()){
+        cout << "       empty \n";
+    }
+    else{
+        for(int id : ids){
+            cout<< "         " << names[id] << "\n";
+
+        }
+    }
+
+
     
 
 
