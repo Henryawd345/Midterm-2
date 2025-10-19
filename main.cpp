@@ -278,6 +278,36 @@ int main() {
     for (int t = 2; t<= 20; t++){
         cout << "Time step #" << t << ":\n";
 
+        if((rand() % 100 + 1) <= probServeFront)
+            vector<int> ids;
+            line.to_vector(ids);
+            if(!ids.empty()){
+                cout << "      " << names[ids[0]] << " is served \n";
+                line.pop_front();
+                lineSize--;
+            }
+
+         if((rand() % 100 + 1) <= probJoinEnd){
+            int id = rand() % (int)names.size();
+            line.push_back(id);
+            lineSize++;
+            cout<< "      " << names[id] << " joins the line\n";
+            } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
