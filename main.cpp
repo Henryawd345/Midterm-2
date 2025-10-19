@@ -181,31 +181,6 @@ public:
             delete temp;
         }
     }
-    void print() {
-        Node* current = head;
-        if (!current) {
-            cout << "List is empty." << endl;
-            return;
-        }
-        while (current) {
-            cout << current->data << " ";
-            current = current->next;
-        }
-        cout << endl;
-    }
-
-    void print_reverse() {
-        Node* current = tail;
-        if (!current) { 
-            cout << "List is empty." << endl;
-            return;
-        }
-        while (current) {
-            cout << current->data << " ";
-            current = current->prev;
-        }
-        cout << endl;
-    }
 
     void to_vector(vector<int>& out) {
         out.clear();
